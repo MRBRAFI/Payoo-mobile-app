@@ -21,7 +21,7 @@
       referrerpolicy="no-referrer"
     />
   </head>
-  <body class="bg-[#f4f5f7] h-screen">
+  <body class="bg-[#f4f5f7] h-[100vh]">
     <div class="main-container bg-white max-w-lg mx-auto rounded-b-xl">
       <div
         class="flex justify-between items-center border-b-1 border-gray-300 p-3"
@@ -86,14 +86,14 @@
           <h2 class="">Get Bonus</h2>
         </div>
         <div
-          id=""
+          id="pay-bill-button"
           class="p-3 rounded-xl border-2 border-gray-200  hover:border-[#0874f2] form-button"
         >
           <img src="./assets/purse1.png" alt="" class="mx-auto" />
           <h2 class="">Pay Bill</h2>
         </div>
         <div
-          id=""
+          id="transaction-button"
           class="p-3 rounded-xl border-2 border-gray-200  hover:border-[#0874f2] form-button"
         >
           <img src="./assets/transaction1.png" alt="" class="mx-auto" />
@@ -218,7 +218,24 @@
     <div id="get-bonus-parent" class="form hidden">
     <h1 class="my-5 font-bold w-full text-center">Get Bonus</h1>
     </div>
-     
-  </body>
+
+
+<!-- Pay Bill Section -->
+    <div id="pay-bill-parent" class="form hidden">
+    <h1 class="my-5 font-bold w-full text-center">Pay Bill</h1>
+    </div>
+
+
+<!-- Transactions Section -->
+    <div id="transactions-parent" class="form hidden">
+    <div class="flex justify-between items-center">
+    <h1 class="my-5 font-bold">Transactions</h1>
+    <p class="text-[#08080880]">View All</p>
+    </div>
+    <div id="transaction-container" class="">
+      
+    </div>
+    </div>
+   </body>
   <script src="home-page.js"></script>
 </html>

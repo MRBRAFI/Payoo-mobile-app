@@ -1,5 +1,6 @@
-// reusable funtionality
+const transactionData = [];
 
+// reusable funtionality
 function reusableForms(id){
     const getTheForms = document.getElementsByClassName('form')
     for(const formOf of getTheForms){
@@ -35,6 +36,7 @@ document.getElementById("add-money-btn").addEventListener("click", function () {
 
   const availableBalance = parseInt(
     document.getElementById("available-balance").innerText
+    
   );
   const sumOfAmount = addAmount + availableBalance;
 
@@ -44,6 +46,14 @@ document.getElementById("add-money-btn").addEventListener("click", function () {
   }
 
   document.getElementById("available-balance").innerText = sumOfAmount;
+
+  const data = {
+    name:"Add Money",
+    date:new Date().toLocaleTimeString()
+  }
+
+  transactionData.push(data);
+  console.log(transactionData);
 });
 
 // withdrawal feature
@@ -71,8 +81,43 @@ document
     const deductionOfBalance = availableBalance - withdrawalAmount;
 
     document.getElementById("available-balance").innerText = deductionOfBalance;
+
+    const data = {
+    name:"Cash Out",
+    date:new Date().toLocaleTimeString()
+  }
+
+  transactionData.push(data);
+
+  console.log(transactionData);
   });
 
+  document.getElementById("transaction-button").addEventListener("click", function(){
+    const transactionContainer = document.getElementById("transaction-container");
+
+    transactionContainer.innerText = "";
+
+    for(const data of transactionData){
+      const div = document.createElement("div");
+      div.innerHTML=`
+      <div class="flex justify-between items-center bg-white rounded-xl p-3 my-3">
+        <div class="flex items-center">
+          <div class="bg-[#f4f5f7] p-3 rounded-full">
+            <img src="./assets/wallet1.png" alt="" class="mx-auto" />
+          </div>
+          <div class="ml-3">
+            <h1>${data.name}</h1>
+            <p>${data.date}</p>
+          </div>
+        </div>
+        <i class="fa-solid fa-ellipsis-vertical"></i>
+      </div>
+      `
+      transactionContainer.appendChild(div)
+    }
+  })
+
+  
 // toggling feature
 
 document.getElementById("add-money-button").addEventListener("click", function () {
@@ -88,9 +133,19 @@ document.getElementById("cash-out-button").addEventListener("click", function ()
 document.getElementById("transfer-money-button").addEventListener("click", function(){
     reusableForms("transfer-money-parent");
     changeColor("transfer-money-button");
-})
+});
 
 document.getElementById("get-bonus-button").addEventListener("click", function(){
     reusableForms("get-bonus-parent");
     changeColor("get-bonus-button");
-})
+});
+
+document.getElementById("pay-bill-button").addEventListener("click", function(){
+    reusableForms("pay-bill-parent");
+    changeColor("pay-bill-button");
+});
+
+document.getElementById("transaction-button").addEventListener("click", function(){
+    reusableForms("transactions-parent");
+    changeColor("transaction-button");
+});
